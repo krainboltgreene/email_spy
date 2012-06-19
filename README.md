@@ -1,12 +1,14 @@
-# Emailspy
+# email_spy
 
-TODO: Write a gem description
+A simple gem that allows you to catch emails sent from your Rails app into your browser.
+
+Based entirely on letter_opener, with bug fixes and real versioning.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'emailspy'
+    gem 'email_spy'
 
 And then execute:
 
@@ -18,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+To start using email_spy simply add this line to your `config/environments/development.rb` file:
+
+``` ruby
+  config.action_mailer.delivery_method = :email_spy
+```
 
 ## Contributing
 

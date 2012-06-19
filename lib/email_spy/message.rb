@@ -1,4 +1,4 @@
-module Emailspy
+module EmailSpy
   class Message
     attr_reader :email
 
