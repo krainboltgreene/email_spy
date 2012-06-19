@@ -1,9 +1,10 @@
-module LetterOpener
+module EmailSpy
   class DeliveryMethod
     attr_accessor :settings
 
     def initialize(options = {})
-      @settings = { location: File.join('.', 'letter_opener') }.merge! options
+      @settings = { location: File.join('.', 'email_spy') }
+      @settings.merge! options
     end
 
     def deliver!(email)
