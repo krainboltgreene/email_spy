@@ -61,16 +61,16 @@
     <dd><%= from %></dd>
 
     <dt>Subject:</dt>
-    <dd><strong><%= mail.subject %></strong></dd>
+    <dd><strong><%= email.subject %></strong></dd>
 
     <dt>Date:</dt>
     <dd><%= Time.now.strftime("%b %e, %Y %I:%M:%S %p %Z") %></dd>
 
     <dt>To:</dt>
-    <dd><%= mail.to.join ", " %></dd>
+    <dd><%= email.to.join ", " %></dd>
   </dl>
 
-  <% if mail.multipart? %>
+  <% if email.multipart? %>
     <p class="alternate">
       <% if type == "plain" %>
         <a href="rich.html">View HTML version</a>
