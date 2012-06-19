@@ -13,7 +13,7 @@ module EmailSpy
       location = File.join settings[:location], "#{time}_#{hash}"
 
       messages = email.parts.map { |part| Message.new location, email, part }
-      messages << Message.new location, email if messages.empty?
+      messages << Message.new(location, email) if messages.empty?
       messages.each &:render
 
       Launchy.open URI.parse "file://#{messages.first.filepath}"
