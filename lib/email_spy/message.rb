@@ -3,9 +3,7 @@ module EmailSpy
     attr_reader :email
 
     def initialize(location, email, part = nil)
-      @location = location
-      @email = email
-      @part = part
+      @location, @email, @part = location, email, part
     end
 
     def render
