@@ -57,11 +57,12 @@
       <% end %>
     </div>
   </div>
+
   <% if email.multipart? %>
     <div class="controls">
-      <% if type == "plain" %>
+      <% case when type == "plain" && email.html_part %>
         <a href="rich.html" class="btn btn-large">HTML</a>
-      <% else %>
+      <% when type == "rich" && email.text_part %>
         <a href="plain.html" class="btn btn-large">Text</a>
       <% end %>
     </div>
