@@ -80,10 +80,10 @@
 
   <% if email.multipart? %>
     <div class="controls">
-      <% case when type == "plain" && email.html_part %>
-        <a href="rich.html" class="btn btn-large">HTML</a>
-      <% when type == "rich" && email.text_part %>
+      <% case when type == "rich" && email.text_part %>
         <a href="plain.html" class="btn btn-large">Text</a>
+      <% when type == "plain" && email.html_part %>
+        <a href="rich.html" class="btn btn-large">HTML</a>
       <% end %>
     </div>
   <% end %>
@@ -91,9 +91,9 @@
 </div>
 
 <div class="message">
-  <% if type == "plain" %>
-    <pre><%= CGI.escapeHTML body %></pre>
-  <% else %>
+  <% unless type == "plain" %>
     <%= body %>
+  <% else %>
+    <pre><%= CGI.escapeHTML body %></pre>
   <% end %>
 </div>

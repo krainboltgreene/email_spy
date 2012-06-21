@@ -22,8 +22,8 @@ module EmailSpy
     end
 
     def messages(email, path)
-      if email.text_part || email.html_part
-        [email.text_part, email.html_part].compact.map do |part|
+      if email.html_part || email.text_part
+        [email.html_part, email.text_part].compact.map do |part|
           Message.new path, email, part
         end
       else
