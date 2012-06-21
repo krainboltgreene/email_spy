@@ -22,8 +22,10 @@ module EmailSpy
     end
 
     def messages(email, path)
-      if email.parts.any?
-        email.parts.map { |part| Message.new path, email, part }
+      if email.text_part || email.html_part
+        [email.text_part, email.html_part].compact.map do |part|
+          Message.new path, email, part
+        end
       else
         [Message.new(path, email)]
       end.each &:render
