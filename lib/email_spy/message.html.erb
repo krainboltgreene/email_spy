@@ -18,40 +18,52 @@
 <div class="header">
   <div class="well">
     <div class="row">
-      <div class="label span1">
-        <strong>From:</strong>
-      </div>
-      <div class="span5">
+      <div class="from field span6">
+        <strong class="label label-info span1">From:</strong>
+        &nbsp;
         <%= from %>
       </div>
 
-      <div class="label span1">
-        <strong>To:</strong>
+      <div class="to field span6">
+        <strong class="label label-info span1">To:</strong>
+        &nbsp;
+        <%= email.to.join ", " unless email.to.empty? %>
       </div>
-      <div class="span5">
-        <strong><%= email.to.join ", " %></strong>
-      </div>
-      <br>
-      <div class="label span1">
-        Subject:
-      </div>
-      <div class="span5">
+
+      <% if email.cc || email.bcc %>
+        <% if email.cc %>
+          <div class="cc field span6">
+            <strong class="label label-info span1">CC:</strong>
+            &nbsp;
+            <%= email.cc.join ", " %>
+          </div>
+        <% end %>
+
+        <% if email.bcc %>
+          <div class="cc field span6">
+            <strong class="label label-info span1">BCC:</strong>
+            &nbsp;
+            <%= email.bcc.join ", " %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <div class="subject field span6">
+        <strong class="label label-info span1">Subject:</strong>
+        &nbsp;
         <%= email.subject %>
       </div>
 
-      <div class="label span1">
-        <strong>Date:</strong>
-      </div>
-      <div class="span5">
+      <div class="date field span6">
+        <strong class="label label-info span1">Date:</strong>
+        &nbsp;
         <%= Time.now.strftime "%b %e, %Y %I:%M:%S %p %Z" %>
       </div>
 
       <% if attachments.any? %>
-        <br>
-        <div class="label span2">
-          <strong>Attachments:</strong>
-        </div>
-        <div class="span10">
+        <div class="attachments field span12">
+          <strong class="label label-info span2">Attachments:</strong>
+          &nbsp;
           <%= attachments.map { |a| "<a href='#{a.last}'>#{a.first}</a>" }.join ', ' %>
         </div>
       <% end %>
