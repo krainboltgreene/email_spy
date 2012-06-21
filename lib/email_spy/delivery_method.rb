@@ -9,8 +9,10 @@ module EmailSpy
 
     def deliver!(email)
       time = Time.now.to_i
-      hash = Digest::SHA1.hexdigest(email.encoded)[0..6]
       location = File.join settings[:location], "#{time}_#{hash}"
+    def digest(email)
+      Digest::SHA1.hexdigest(email.encoded)[0..6]
+    end
 
     def messages(email, path)
       if email.parts.any?
