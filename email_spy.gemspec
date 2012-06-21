@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = EmailSpy::VERSION
 
-  gem.add_dependency 'launchy'
+  gem.add_runtime_dependency 'launchy'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'mail'
 end
