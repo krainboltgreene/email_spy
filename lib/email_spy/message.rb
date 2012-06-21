@@ -62,6 +62,12 @@ module EmailSpy
       File.join attachments_directory, attachment.filename
     end
 
+    def save_attachment(attachment)
+      File.open attachment_path(attachment), 'wb' do |file|
+          file.write attachment.body.raw_source
+      end unless File.exists? attachment_path attachment
+
+      @attachments << [attachment.filename, "attachments/#{URI.escape attachment.filename }"]
     end
   end
 end
