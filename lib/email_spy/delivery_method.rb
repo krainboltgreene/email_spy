@@ -32,7 +32,7 @@ module EmailSpy
     end
 
     def launch(messages)
-      Launchy.open URI.parse "file:///#{messages.first.filepath}"
+      Launchy.open URI.parse "file://#{messages.first.filepath}"
     end
 
     def email_directory
