@@ -8,6 +8,9 @@ module EmailSpy
     end
 
     def deliver!(email)
+      launch messages(email, location(email, settings))
+    end
+
     private
 
     def location(email, settings)
@@ -26,6 +29,7 @@ module EmailSpy
       end.each &:render
     end
 
+    def launch(messages)
       Launchy.open URI.parse "file://#{messages.first.filepath}"
     end
   end
