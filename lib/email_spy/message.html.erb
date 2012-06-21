@@ -45,6 +45,16 @@
       <div class="span5">
         <%= Time.now.strftime "%b %e, %Y %I:%M:%S %p %Z" %>
       </div>
+
+      <% if attachments.any? %>
+        <br>
+        <div class="label span2">
+          <strong>Attachments:</strong>
+        </div>
+        <div class="span10">
+          <%= attachments.map { |a| "<a href='#{a.last}'>#{a.first}</a>" }.join ', ' %>
+        </div>
+      <% end %>
     </div>
   </div>
   <% if email.multipart? %>
