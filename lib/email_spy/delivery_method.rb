@@ -8,6 +8,8 @@ module EmailSpy
     end
 
     def deliver!(email)
+    private
+
     def location(email, settings)
       File.join settings[:location], "#{Time.now.to_i}_#{digest email}"
     end
