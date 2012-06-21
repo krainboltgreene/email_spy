@@ -8,8 +8,10 @@ module EmailSpy
     end
 
     def deliver!(email)
-      time = Time.now.to_i
-      location = File.join settings[:location], "#{time}_#{hash}"
+    def location(email, settings)
+      File.join settings[:location], "#{Time.now.to_i}_#{digest email}"
+    end
+
     def digest(email)
       Digest::SHA1.hexdigest(email.encoded)[0..6]
     end
