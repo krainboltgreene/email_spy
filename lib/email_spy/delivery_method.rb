@@ -3,7 +3,7 @@ module EmailSpy
     attr_accessor :settings
 
     def initialize(options = {})
-      @settings = { location: File.join('.', 'email_spy') }
+      @settings = { location: email_directory }
       @settings.merge! options
     end
 
@@ -33,6 +33,14 @@ module EmailSpy
 
     def launch(messages)
       Launchy.open URI.parse "file://#{messages.first.filepath}"
+    end
+
+    def email_directory
+      if defined?(Rails)
+        Rails.root.join "tmp", EMAIL_DIRECTORY_NAME
+      else
+        File.join '.', EMAIL_DIRECTORY_NAME
+      end
     end
   end
 end
