@@ -29,11 +29,11 @@ module EmailSpy
     end
 
     def from
-      @from ||= @email.from.kind_of?(Array) && @email.from.join(", ") || @email.from
+      @from ||= Array(@email.from).join ", "
     end
 
     def reply_to
-      @reply_to ||= @email.reply_to.kind_of?(Array) && @email.reply_to.join(", ") || @email.reply_to
+      @reply_to ||= Array(@email.reply_to).join ", "
     end
 
     def type
