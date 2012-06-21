@@ -37,7 +37,9 @@ module EmailSpy
     end
 
     def encoding
-      if body.respond_to?(:encoding) then body.encoding else "utf-8" end
+      if body.respond_to? :encoding then body.encoding else "utf-8" end
+    end
+
     private
 
     def create_templates(file_path, binding)
