@@ -48,12 +48,13 @@
         <% end %>
       <% end %>
 
-
-      <div class="reply-to field span6">
-        <strong class="label label-info span1">Reply-To:</strong>
-        &nbsp;
-        <%= reply_to %>
-      </div>
+      <% unless reply_to.empty? %>
+        <div class="reply-to field span6">
+          <strong class="label label-info span1">Reply-To:</strong>
+          &nbsp;
+          <%= reply_to %>
+        </div>
+      <% end %>
 
       <div class="subject field span6">
         <strong class="label label-info span1">Subject:</strong>
