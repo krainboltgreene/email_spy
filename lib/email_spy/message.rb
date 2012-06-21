@@ -8,6 +8,7 @@ module EmailSpy
     end
 
     def render
+      create_attachments unless email.attachments.empty?
       create_templates filepath, binding
     end
 
@@ -45,6 +46,12 @@ module EmailSpy
       File.open file_path, 'w' do |file|
         file.write ERB.new(template).result binding
       end
+    end
+
+    def create_attachments
+      FileUtils.mkdir_p attachments_directory
+
+      email.attachments.each &method(:save_attachment)
     end
     end
   end
