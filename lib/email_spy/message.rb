@@ -35,11 +35,11 @@ module EmailSpy
     end
 
     def type
-      content_type =~ /html/ ? "rich" : "plain"
+      if content_type =~ /html/ then "rich" else "plain" end
     end
 
     def encoding
-      body.respond_to?(:encoding) ? body.encoding : "utf-8"
+      if body.respond_to?(:encoding) then body.encoding else "utf-8" end
     end
   end
 end
