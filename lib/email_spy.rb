@@ -1,6 +1,7 @@
 require "fileutils"
 require "digest/sha1"
 require "cgi"
+require "uri"
 require "launchy"
 
 require_relative "email_spy/message"
