@@ -8,11 +8,7 @@ module EmailSpy
     end
 
     def render
-      FileUtils.mkdir_p @location
-
-      File.open filepath, 'w' do |file|
-        file.write ERB.new(template).result binding
-      end
+      create_templates filepath, binding
     end
 
     def template
@@ -41,6 +37,15 @@ module EmailSpy
 
     def encoding
       if body.respond_to?(:encoding) then body.encoding else "utf-8" end
+    private
+
+    def create_templates(file_path, binding)
+      FileUtils.mkdir_p @location
+
+      File.open file_path, 'w' do |file|
+        file.write ERB.new(template).result binding
+      end
+    end
     end
   end
 end
