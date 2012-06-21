@@ -32,6 +32,10 @@ module EmailSpy
       @from ||= @email.from.kind_of?(Array) && @email.from.join(", ") || @email.from
     end
 
+    def reply_to
+      @reply_to ||= @email.reply_to.kind_of?(Array) && @email.reply_to.join(", ") || @email.reply_to
+    end
+
     def type
       if content_type =~ /html/ then "rich" else "plain" end
     end
