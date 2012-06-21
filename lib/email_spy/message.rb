@@ -53,6 +53,11 @@ module EmailSpy
 
       email.attachments.each &method(:save_attachment)
     end
+
+    def attachments_directory
+      File.join @location, 'attachments'
+    end
+
     end
   end
 end
