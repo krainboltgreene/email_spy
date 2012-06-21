@@ -58,6 +58,10 @@ module EmailSpy
       File.join @location, 'attachments'
     end
 
+    def attachment_path(attachment)
+      File.join attachments_directory, attachment.filename
+    end
+
     end
   end
 end
