@@ -12,9 +12,13 @@ module EmailSpy
       hash = Digest::SHA1.hexdigest(email.encoded)[0..6]
       location = File.join settings[:location], "#{time}_#{hash}"
 
-      messages = email.parts.map { |part| Message.new location, email, part }
-      messages << Message.new(location, email) if messages.empty?
-      messages.each &:render
+    def messages(email, path)
+      if email.parts.any?
+        email.parts.map { |part| Message.new path, email, part }
+      else
+        [Message.new(path, email)]
+      end.each &:render
+    end
 
       Launchy.open URI.parse "file://#{messages.first.filepath}"
     end
