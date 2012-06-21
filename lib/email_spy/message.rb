@@ -1,9 +1,10 @@
 module EmailSpy
   class Message
     attr_reader :email
+    attr_reader :attachments
 
     def initialize(location, email, part = nil)
-      @location, @email, @part = location, email, part
+      @location, @email, @part, @attachments = location, email, part, []
     end
 
     def render
